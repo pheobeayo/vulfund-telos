@@ -3,6 +3,8 @@ import "react-toastify/dist/ReactToastify.css";
 import view from "../assets/view.svg";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
+import useDonation from "../hooks/useDonation";
+import useCreateProposal from "../hooks/useCreateProposal";
 
 const style = {
   position: "absolute",
@@ -25,7 +27,26 @@ const Banner = () => {
   const handleClose = () => setOpen(false);
   const handleOpenSubmit = () => setOpenSubmit(true);
   const handleSubmitClose = () => setOpenSubmit(false);
+  const [amount, setAmount] = useState(0)
+  const handleDonate = useDonation()
+  const handleRequest = useCreateProposal()
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
+  const [donateAdd, setDonateAdd] = useState('')
+  const [requestAmount, setRequestAmount] = useState('')
 
+  const handleUserDonation = async () => {
+    await handleDonate(amount)
+    setAmount('')
+  }
+
+  const handleCreateProposal = async () => {
+    await handleRequest(title, description, donateAdd, requestAmount)
+    setTitle('')
+    setDescription('')
+    setDonateAdd('')
+    setRequestAmount('')
+  }
 
   return (
     <section className=" bg-[#02080B]">
@@ -63,12 +84,12 @@ const Banner = () => {
             <Box sx={style}>
               <input
                 type="text"
-                value='donateAmount'
-                // onChange={(e) => setDonateAmount(e.target.value)}
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
                 placeholder="Enter amount"
                 className="text-white rounded-lg w-[100%] p-4 bg-transparent border border-white backdrop-blur-lg mb-4 outline-none"
               />
-              <button className="bg-gradient-to-r from-[#6AFEB0]  to-[#5CE3FB]  hover:bg-[#5CE3FB] text-[#111012] py-2 px-4 rounded-lg lg:text-[20px] md:text-[20px] font-bold text-[16px] w-[100%] my-4">
+              <button className="bg-gradient-to-r from-[#6AFEB0]  to-[#5CE3FB]  hover:bg-[#5CE3FB] text-[#111012] py-2 px-4 rounded-lg lg:text-[20px] md:text-[20px] font-bold text-[16px] w-[100%] my-4" onClick={handleUserDonation}>
                 {" "}
                 Donate
               </button>
@@ -104,33 +125,33 @@ const Banner = () => {
             <Box sx={style}>
               <input
                 type="text"
-                value='requestTopic'
-                // onChange={(e) => setRequestTopic(e.target.value)}
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
                 placeholder="Enter request title"
                 className="text-white rounded-lg w-[100%] p-4 bg-transparent border border-white backdrop-blur-lg mb-4 outline-none "
               />
               <input
                 type="text"
-                value='amount'
-                // onChange={(e) => setAmount(e.target.value)}
+                value={requestAmount}
+                onChange={(e) => setRequestAmount(e.target.value)}
                 placeholder="Enter the amount of funding required"
                 className="text-white rounded-lg w-[100%] p-4 bg-transparent border border-white backdrop-blur-lg mb-4 outline-none "
               />
               <input
                 type="text"
-                value='description'
-                // onChange={(e) => setDescription(e.target.value)}
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
                 placeholder="Describe the funding request"
                 className="text-white rounded-lg w-[100%] p-4 bg-transparent border border-white backdrop-blur-lg mb-4 outline-none"
               />
               <input
                 type="text"
-                value="userAddress"
-                
+                value={donateAdd}
+                onChange={(e) => setDonateAdd(e.target.value)}
                 placeholder="Enter your wallet address"
                 className="text-white rounded-lg w-[100%] p-4 bg-transparent border border-white backdrop-blur-lg mb-4 outline-none"
               />
-              <button className="bg-gradient-to-r from-[#6AFEB0]  to-[#5CE3FB]  hover:bg-[#5CE3FB] text-[#111012] py-2 px-4 rounded-lg lg:text-[20px] md:text-[20px] font-bold text-[16px] w-[100%] my-4">
+              <button className="bg-gradient-to-r from-[#6AFEB0]  to-[#5CE3FB]  hover:bg-[#5CE3FB] text-[#111012] py-2 px-4 rounded-lg lg:text-[20px] md:text-[20px] font-bold text-[16px] w-[100%] my-4" onClick={handleCreateProposal}>
                 {" "}
                 Submit
               </button>

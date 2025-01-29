@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import project1 from "../../assets/project1.svg";
 import project2 from "../../assets/project2.svg";
@@ -10,13 +9,21 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-
-
+import useGetAllProposals from "../../hooks/useGetAllProposals";
+import useGetAllOrganisation from "../../hooks/useGetAllOrganisation";
+import { formatUnits } from "ethers";
 
 const TreasuryDonation = () => {
-  
+  const { allProposal } = useGetAllProposals();
+  const { organisation } = useGetAllOrganisation();
+  console.log(organisation)
 
- 
+  const convertIpfsUrl = (url) => {
+    if (url && url.startsWith("ipfs://")) {
+      return url.replace("ipfs://", "https://ipfs.io/ipfs/");
+    }
+    return url || "";
+  };
 
   return (
     <main className="bg-[#02080B]">
@@ -67,39 +74,36 @@ const TreasuryDonation = () => {
                   </span>{" "}
                 </h2>
                 <div className="flex lg:flex-row md:flex-row flex-col justify-between items-center my-10 flex-wrap">
-               
-                        <div  className="lg:w-[32%] md:w-[32%] w-[100%] p-4 border-white bg-[#191F1C]/5 rounded-xl border shadow-lg">
-                          
-                                  <img
-                                    src={project1}
-                                    alt="projectphoto"
-                                    className="w-[100%] h-[237px] object-cover object-center rounded-lg"
-                                  />
-                        
-                          <h3 className="font-bold mt-4 lg:text-[20px] md:text-[20px] text-[18px] text-white">
-                            proposalTopic
-                          </h3>
-                          <p className="text-white text-justify truncate">
-                            description
-                          </p>
-                          <p className="flex justify-between text-white">
-                            Amount needed <span>Balance left</span>
-                          </p>
-                          <p className="flex justify-between text-[#5BDEF3]">
-                            Avax
-                            <span> Avax</span>
-                          </p>
-                          <Link to={`treasury-donation/proposalid}`}>
-                            <button className="bg-transparent my-4 border w-full py-2 px-4 border-white text-white rounded-lg">
-                              View details
-                            </button>
-                          </Link>
-                        </div>
-                    
-                      <p>No projects available.</p>
-                    
+                  <div className="lg:w-[32%] md:w-[32%] w-[100%] p-4 border-white bg-[#191F1C]/5 rounded-xl border shadow-lg">
+                    <img
+                      src={project1}
+                      alt="projectphoto"
+                      className="w-[100%] h-[237px] object-cover object-center rounded-lg"
+                    />
+
+                    <h3 className="font-bold mt-4 lg:text-[20px] md:text-[20px] text-[18px] text-white">
+                      proposalTopic
+                    </h3>
+                    <p className="text-white text-justify truncate">
+                      description
+                    </p>
+                    <p className="flex justify-between text-white">
+                      Amount needed <span>Balance left</span>
+                    </p>
+                    <p className="flex justify-between text-[#5BDEF3]">
+                      Avax
+                      <span> Avax</span>
+                    </p>
+                    <Link to={`treasury-donation/proposalid}`}>
+                      <button className="bg-transparent my-4 border w-full py-2 px-4 border-white text-white rounded-lg">
+                        View details
+                      </button>
+                    </Link>
                   </div>
+
+                  <p>No projects available.</p>
                 </div>
+              </div>
             </TabPanel>
             <TabPanel value="two">
               <div className="lg:w-[100%] md:w-[100%] w-[100%] mx-auto py-12 px-4 lg:px-0 md:px-0">
@@ -149,7 +153,8 @@ const TreasuryDonation = () => {
                       </h3>
                       <p className="text-white text-justify">
                         {" "}
-                        Financial support for medical supplies for elderly residents.
+                        Financial support for medical supplies for elderly
+                        residents.
                       </p>
                       <p className="flex justify-between">
                         Amount needed <span>Amount Raised</span>
@@ -242,7 +247,8 @@ const TreasuryDonation = () => {
                       </h3>
                       <p className="text-white text-justify">
                         {" "}
-                        Financial support for medical supplies for elderly residents.
+                        Financial support for medical supplies for elderly
+                        residents.
                       </p>
                       <p className="flex justify-between">
                         Amount needed <span>Amount Raised</span>
@@ -291,87 +297,46 @@ const TreasuryDonation = () => {
                 More Funding Requests
               </h2>
               <div className="flex lg:flex-row md:flex-row flex-col justify-between items-center my-10 flex-wrap">
-                <div className="lg:w-[32%] md:w-[32%] w-[100%] p-4  border-white bg-[#191F1C]/5 rounded-xl border shadow-lg">
-                  <Link to="" className="text-white">
-                    <img
-                      src={project1}
-                      alt=""
-                      className="w-[100%] h-[237px] object-cover object-center rounded-lg"
-                    />
-                    <h3 className="font-bold mt-4 lg:text-[20px] md:text-[20px] text-[18px] ">
-                      Bright Future Skill Academy
-                    </h3>
-                    <p className="text-white text-justify">
-                      Funds to offer vocational training for disadvantaged
-                      youths.{" "}
-                    </p>
-                    <p className="flex justify-between">
-                      Amount needed <span>Amount Raised</span>
-                    </p>
-                    <p className="flex justify-between text-[#5BDEF3]">
-                      {" "}
-                      1,500 Avax <span> 1,500 Avax</span>
-                    </p>
-                    <button className="bg-transparent my-4 border w-[100%] py-2 px-4 border-white text-white rounded-lg">
-                      View details
-                    </button>
-                  </Link>
+                  {allProposal.length > 0 ? (
+                    allProposal.map((item) => (
+                      <div
+                        key={item.proposalid}
+                        className="lg:w-[32%] md:w-[32%] w-[100%] p-4 border-white bg-[#191F1C]/5 rounded-xl border shadow-lg"
+                      >
+                        {organisation?.map(
+                          (info) =>
+                            item.beneficiary === info[0] && (
+                              <img
+                                src={convertIpfsUrl(info[1])}
+                                alt="projectphoto"
+                                className="w-[100%] h-[237px] object-cover object-center rounded-lg"
+                              />
+                            )
+                        )}
+                        <h3 className="font-bold mt-4 lg:text-[20px] md:text-[20px] text-[18px] text-white">
+                          {item.proposalTopic}
+                        </h3>
+                        <p className="text-white text-justify truncate">
+                          {item.description.slice(0, 40)}...
+                        </p>
+                        <p className="flex justify-between text-white">
+                          Amount needed <span>Balance left</span>
+                        </p>
+                        <p className="flex justify-between text-[#5BDEF3]">
+                          {formatUnits(item.amount)} ETH
+                          <span>{formatUnits(item.balance)} ETH</span>
+                        </p>
+                        <Link to={`funding-requests/${item.proposalid}`}>
+                          <button className="bg-transparent my-4 border w-full py-2 px-4 border-white text-white rounded-lg">
+                            View details
+                          </button>
+                        </Link>
+                      </div>
+                    ))
+                  ) : (
+                    <p>No projects available.</p>
+                  )}
                 </div>
-
-                <div className="lg:w-[32%] md:w-[32%] w-[100%] p-4  border-white  bg-[#191F1C]/5 border rounded-xl shadow-lg">
-                  <Link to="" className="text-white">
-                    <img
-                      src={project2}
-                      alt=""
-                      className="w-[100%] h-[237px] object-cover object-center rounded-lg"
-                    />
-                    <h3 className="font-bold mt-4 lg:text-[20px] md:text-[20px] text-[18px] ">
-                      Grace Senior Citizen Home
-                    </h3>
-                    <p className="text-white text-justify">
-                      {" "}
-                      Financial support for medical supplies for elderly residents.
-                    </p>
-                    <p className="flex justify-between">
-                      Amount needed <span>Amount Raised</span>
-                    </p>
-                    <p className="flex justify-between text-[#5BDEF3]">
-                      {" "}
-                      1,500 Avax <span> 1,500 Avax</span>
-                    </p>
-                    <button className="bg-transparent my-4 border w-[100%] py-2 px-4 border-white text-white rounded-lg">
-                      View details
-                    </button>
-                  </Link>
-                </div>
-                <div className="lg:w-[32%] md:w-[32%] w-[100%] p-4 border border-white bg-[#191F1C]/5  rounded-xl  shadow-lg">
-                  <Link to="" className="text-white">
-                    <img
-                      src={project3}
-                      alt=""
-                      className="w-[100%] h-[237px] object-cover object-center rounded-lg"
-                    />
-                    <h3 className="font-bold mt-4 lg:text-[20px] md:text-[20px] text-[18px] ">
-                      Sunshine Orphanage
-                    </h3>
-                    <p className="text-white text-justify">
-                      {" "}
-                      Funding to provide school supplies and uniforms for 50
-                      orphaned children.
-                    </p>
-                    <p className="flex justify-between">
-                      Amount needed <span>Amount Raised</span>
-                    </p>
-                    <p className="flex justify-between text-[#5BDEF3]">
-                      {" "}
-                      1,500 Avax <span> 1,500 Avax</span>
-                    </p>
-                    <button className="bg-transparent my-4 border w-[100%] py-2 px-4 border-white text-white rounded-lg">
-                      View details
-                    </button>
-                  </Link>
-                </div>
-              </div>
             </div>
           </TabContext>
         </Box>

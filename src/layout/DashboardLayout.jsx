@@ -1,8 +1,25 @@
+import React, { useCallback, useEffect } from 'react'
+import { Outlet, useNavigate } from 'react-router-dom'
+import { useAppKitAccount } from '@reown/appkit/react'
 import Sidebar from "../components/Sidebar";
-import { Outlet } from "react-router-dom";
 import MobileSidebar from "../components/MobileSidebar";
 
 const DashboardLayout = () => {
+  const { isConnected } = useAppKitAccount();
+  const navigate = useNavigate();
+
+  const handleRedirect = useCallback(async () => {
+    if (isConnected) {
+      navigate("/dashboard");
+    } else {
+      navigate("/");
+    }
+  }, [isConnected, navigate]);
+
+  useEffect(() => {
+    handleRedirect();
+  }, [handleRedirect, isConnected]);
+
   return (
     <div>
       <div className="flex bg-[#02080f]">

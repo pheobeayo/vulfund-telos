@@ -1,10 +1,14 @@
 import heroImage from "../assets/heroImage.svg";
 import { Link } from "react-router-dom";
 import vector from "../assets/vector.svg";
-
+import { toast } from "react-toastify";
 
 const Hero = () => {
-    
+     const handleConnect = () => {
+        return toast.error("Connect your wallet to get started", {
+          position: "top-center",
+        });
+      };
 
   return (
     <main
@@ -31,14 +35,14 @@ const Hero = () => {
               <div className="mt-6">
                 <Link>
                 <button
-                  // onClick={handleConnect}
+                  onClick={handleConnect}
                   className="bg-gradient-to-r from-[#6AFEB0] to-[#5CE3FB] rounded-lg p-4 text-[#111012] font-montserrat mr-4 lg:text-[20px] md:text-[20px] text-[18px]"
                 >
                   Donate Now
                 </button>
                 </Link>
                 <button
-                  // onClick={handleConnect}
+                  onClick={handleConnect}
                   className="border border-[#5CE3FB] rounded-lg p-4 text-white font-montserrat bg-transparent lg:text-[20px] md:text-[20px] text-[18px]"
                 >
                   Submit Funding Request

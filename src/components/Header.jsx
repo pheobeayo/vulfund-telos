@@ -3,9 +3,12 @@ import logo from "../assets/logo.svg";
 import { NavLink } from "react-router-dom";
 import { Sling as Hamburger } from "hamburger-react";
 import { toast } from "react-toastify";
+import { useAppKit, useAppKitAccount } from "@reown/appkit/react";
 
 const Header = () => {
   const [isOpen, setOpen] = useState(false);
+  const { open } = useAppKit()
+  const { isConnected } = useAppKitAccount()
 
   const handleConnect = () => {
     return toast.error("Connect your wallet", {
@@ -38,6 +41,7 @@ const Header = () => {
           >
             Register for Funding
           </button>
+          {!isConnected ? <button className="bg-gradient-to-r from-[#6AFEB0] to-[#5CE3FB] rounded-lg p-4 text-[#111012] font-montserrat mr-4 lg:text-[20px] md:text-[20px] text-[18px]" onClick={() => open()}>Connect Wallet</button> : <w3m-button /> }
         </nav>
        
       </div>

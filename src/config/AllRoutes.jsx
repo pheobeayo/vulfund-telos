@@ -7,11 +7,10 @@ import {
 } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import PageLoader from "../components/Loader/PageLoader";
-
+import Register from "../pages/dashboard/Register";
 
 const Home = lazy(() => import("../pages/Home"));
 const HomeLayout = lazy(() => import('../layout/HomeLayout'));
-const Register = lazy(() => import('../pages/dashboard/Register'));
 const TreasuryDonation = lazy(() => import('../pages/dashboard/TreasuryDonation'));
 const TreasuryDonationDetails = lazy(() => import('../pages/dashboard/TreasuryProjectDetail'))
 const FundingRequests = lazy(() => import('../pages/dashboard/FundingRequests'));

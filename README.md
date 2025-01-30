@@ -29,9 +29,10 @@ Vulfund addresses these issues by:
 
 ```bash
 
-VulfundNFT deployed at: 0xeBed63D638Cb43BBa59380E5b7C9fbe53DC615bE
+VulfundNFT deployed at: 0xcA7D2E45D893293B77C878B01890C61491884a90
 
-VulfundV2 deployed at: 0x48f0172086d1548B1c411a53C523721bb21DCB82
+Vulfund deployed at: 0xaaE627a823bA711cEBFB35D6A560C27C094e8642
+
 
 ```
 

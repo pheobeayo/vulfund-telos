@@ -37,9 +37,9 @@ const TreasuryProjectDetail = () => {
           backgroundPosition: "left top",
         }}
       >
-        <div className="flex flex-col lg:flex-row items-center px-8 lg:px-40 h-screen">
+        <div className="flex flex-col lg:flex-row items-center gap-4 px-8 lg:px-28 md:px-28 h-screen">
 
-          <div className="lg:w-1/2 w-full text-center">
+          <div className="lg:w-1/2 md:w-1/2 xl:w-1/2 2xl:w-1/2 w-full text-center">
           {organisation.map(
               (info) =>
                 details.beneficiary === info.address && (
@@ -65,8 +65,8 @@ const TreasuryProjectDetail = () => {
             <p className="text-white text-justify text-sm">{details.description}</p>
             <h1 className="text-white text-left text-lg font-serif mt-4">Request</h1>
           </div>
-          <div className="lg:w-1/2 w-full bg-[#02080B]">
-            <div className="bg-[#0A1F28] rounded-xl p-4 my-4">
+          <div className="lg:w-1/2 md:w-1/2 h-full w-full bg-[#02080B]">
+            <div className="bg-[#0A1F28] rounded-xl p-4 my-4 mt-12">
               <h1 className="text-white text-lg font-bold">Poll Overview</h1>
               <h2 className="text-[#D3D0C7] text-sm flex justify-between my-6">
                 Amount needed <span>Balance left</span>
@@ -82,7 +82,7 @@ const TreasuryProjectDetail = () => {
               <h1 className="text-white text-lg font-bold">Vote ({Number(details.votes)})</h1>
               <div className="flex gap-2 w-full">
                 <Vote id={id} />
-                <button className="bg-transparent w-[30%] py-2 text-white border border-white rounded-xl flex gap-2 justify-center">
+                <button className="bg-transparent w-[30%] py-2 text-white mb-2 rounded-xl border-white border flex gap-2  place-content-center">
                   <FaLongArrowAltDown /> Downvote
                 </button>
               </div>

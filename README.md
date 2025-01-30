@@ -16,6 +16,16 @@ Vulfund addresses these issues by:
 •	DAO Governance: Empowering donors through NFT membership (granted for donations of $100 or more) to collectively decide on funding allocation through community voting.
 •	Direct Impact: Providing a platform for underprivileged institutions to register their needs and receive direct financial support for essential needs like food, healthcare, education, and skills training from a global crowdfunding community.
 
+## Screenshots
+
+- 1
+
+![Screenshot1](public/screenshot1.jpg)
+
+- 2
+
+![Screenshot1](public/screenshot2.jpg)
+
 ## Key Features
 •	Decentralized Donations: Secure and transparent crowdfunding for vulnerable individuals and institutions.
 •	DAO Governance: NFT-based membership rights for donors contributing $100 or more to vote on fund allocations.

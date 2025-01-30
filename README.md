@@ -8,13 +8,13 @@ Vulfund is a blockchain-powered platform designed to facilitate transparent and 
 
 ### Problem Statement:
 In Africa, less privileged communities such as motherless baby homes, orphanages, senior citizen homes, homes for disabled or special needs people, and other underprivileged communities struggle to access essential resources such as food, healthcare, education, and skill development.
-The traditional fundraising methods for this social causes in Africa often lack transparency and control over how funds are used as a result of the centralized donation systems that faces issues of trust and efficiency, suffer from high administrative fees, and face challenges in reaching a global audience. This limits the support available to those in desperate need.
+The traditional fundraising methods for these social causes in Africa often lack transparency and control over how funds are used due to the centralized donation systems that face issues of trust and efficiency, suffer from high administrative fees, and face challenges in reaching a global audience. This limits the support available to those in desperate need.
 
 ### Solution & Objectives:
 Vulfund addresses these issues by:
 •	Decentralization: Utilizing blockchain technology to create a transparent and secure platform, eliminating intermediaries and ensuring all donations reach their intended recipients.
 •	DAO Governance: Empowering donors through NFT membership (granted for donations of $100 or more) to collectively decide on funding allocation through community voting.
-•	Direct Impact: Providing a platform for underprivileged institutions to register their needs and receive direct financial support for essential needs like food, healthcare, education, and skills training from a global crowdfunding community.
+•	Direct Impact: Providing a platform for underprivileged institutions to register their needs and receive financial support for essential needs like food, healthcare, education, and skills training from a global crowdfunding community.
 
 ## Screenshots
 
@@ -35,7 +35,7 @@ Vulfund addresses these issues by:
 
 
 ### Technology Stack
-•	Blockchain: For secured operations, the smart contract audited and deployed on Telos on:
+•	Blockchain: For secured operations, the smart contract is audited and deployed on Telos on:
 
 ```bash
 
@@ -51,22 +51,26 @@ Vulfund deployed at: 0xaaE627a823bA711cEBFB35D6A560C27C094e8642
 •	Frontend Framework: React, Tailwind CSS, Vite
 
 •	Design: Figma
+``` bash
+https://www.figma.com/design/mJIi4ei1qBxa0cUxqxQxHm/Vulfund?node-id=2-2
 
-
+```
 ## Repository: 
 ``` bash
 
 https://github.com/pheobeayo/vulfund-telos
 
 ```
+
 ### MVP Deployment: 
 ```bash
 https://vulfund-telos-psi.vercel.app/
 ```
+
 ### Demo Video: 
 ```bash
 
-https://youtu.be/dczZqGQ9hLk
+https://youtu.be/Rnnp1cVRTL8
 
 
 ```

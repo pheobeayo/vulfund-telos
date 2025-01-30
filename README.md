@@ -61,7 +61,7 @@ https://github.com/pheobeayo/vulfund-telos
 ```
 ### MVP Deployment: 
 ```bash
-https://vulfund-telos.vercel.app/
+https://vulfund-telos-psi.vercel.app/
 ```
 ### Demo Video: 
 ```bash

@@ -1,3 +1,4 @@
+
 import vector from "../../assets/vector.svg";
 import Banner from "../../components/Banner";
 import Box from "@mui/material/Box";
@@ -5,21 +6,20 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
+import { TbFoldersOff } from "react-icons/tb";
+import project1 from '../../assets/project1.svg'
 import { Link } from "react-router-dom";
-import useGetAllProposals from "../../hooks/useGetAllProposals";
-import useGetAllOrganisation from "../../hooks/useGetAllOrganisation";
+
+
+
 
 const FundingRequests = () => {
-  const { allProposal } = useGetAllProposals();
-  const { organisation } = useGetAllOrganisation();
+  
+  
 
-  const convertIpfsUrl = (url) => {
-    if (url && url.startsWith("ipfs://")) {
-      return url.replace("ipfs://", "https://ipfs.io/ipfs/");
-    }
-    return url || "";
-  };
+ 
 
+   
   return (
     <main className="bg-[#02080B] ">
       <Banner />
@@ -39,7 +39,7 @@ const FundingRequests = () => {
             borderColor: "#0A5B68",
           }}
         >
-          <TabContext>
+          <TabContext >
             <div className="px-4  mt-4 flex gap-4 font-bold text-white w-[90%] flex-col lg:flex-row md:flex-row">
               <TabList
                 // onChange={handleChange}
@@ -57,47 +57,39 @@ const FundingRequests = () => {
                   All Funding Requests{" "}
                 </h2>
                 <div className="flex lg:flex-row md:flex-row flex-col justify-between items-center my-10 flex-wrap">
-                  {allProposal.length > 0 ? (
-                    allProposal.map((item) => (
-                      <div
-                        key={item.proposalid}
-                        className="lg:w-[32%] md:w-[32%] w-[100%] p-4 border-white bg-[#191F1C]/5 rounded-xl border shadow-lg"
-                      >
-                        {organization.map(
-                          (info) =>
-                            item.beneficiary === info[0] && (
-                              <img
-                                src={convertIpfsUrl(info[1])}
-                                alt="projectphoto"
-                                className="w-[100%] h-[237px] object-cover object-center rounded-lg"
-                              />
-                            )
-                        )}
-                        <h3 className="font-bold mt-4 lg:text-[20px] md:text-[20px] text-[18px] text-white">
-                          {item.proposalTopic}
-                        </h3>
-                        <p className="text-white text-justify truncate">
-                          {item.description.slice(0, 40)}...
-                        </p>
-                        <p className="flex justify-between text-white">
-                          Amount needed <span>Balance left</span>
-                        </p>
-                        <p className="flex justify-between text-[#5BDEF3]">
-                          {formatUnits(item.amount)} ETH
-                          <span>{formatUnits(item.balance)} ETH</span>
-                        </p>
-                        <Link to={`funding-requests/${item.proposalid}`}>
-                          <button className="bg-transparent my-4 border w-full py-2 px-4 border-white text-white rounded-lg">
-                            View details
-                          </button>
-                        </Link>
-                      </div>
-                    ))
-                  ) : (
-                    <p>No projects available.</p>
-                  )}
+                    
+                        <div  className="lg:w-[32%] md:w-[32%] w-[100%] p-4 border-white bg-[#191F1C]/5 rounded-xl border shadow-lg">
+                         
+                                  <img
+                                    src={project1}
+                                    alt="projectphoto"
+                                    className="w-[100%] h-[237px] object-cover object-center rounded-lg"
+                                  />
+                           
+                          <h3 className="font-bold mt-4 lg:text-[20px] md:text-[20px] text-[18px] text-white">
+                            proposalTopic
+                          </h3>
+                          <p className="text-white text-justify truncate">
+                            description
+                          </p>
+                          <p className="flex justify-between text-white">
+                            Amount needed <span>Balance left</span>
+                          </p>
+                          <p className="flex justify-between text-[#5BDEF3]">
+                           TLOS
+                            <span> TLOS</span>
+                          </p>
+                          <Link to={`/dashboard/funding-requests/proposalid`}>
+                            <button className="bg-transparent my-4 border w-full py-2 px-4 border-white text-white rounded-lg">
+                              View details
+                            </button>
+                          </Link>
+                        </div>
+                    
+                      <p className="text-white text-center justify-center flex items-center w-[100%]"><TbFoldersOff className="mr-4 text-4xl" /> No projects available.</p>
+                   
+                  </div>
                 </div>
-              </div>
             </TabPanel>
             <TabPanel value="two"></TabPanel>
           </TabContext>

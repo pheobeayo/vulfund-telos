@@ -4,19 +4,18 @@ import { useAppKitAccount, useAppKitNetwork } from "@reown/appkit/react";
 import { toast } from "react-toastify";
 import { telosTestnet } from "@reown/appkit/networks";
 import { ErrorDecoder } from "ethers-decode-error";
-import abi from "../constants/abi.json";
-import { ethers } from "ethers";
+import abi from '../constants/abi.json'
 
-const useDirectFund = () => {
+const useVote = () => {
   const contract = useContractInstance(true);
   const { address } = useAppKitAccount();
   const { chainId } = useAppKitNetwork();
   const errorDecoder = ErrorDecoder.create([abi]);
 
   return useCallback(
-    async (id, donateAmount) => {
-      if (!donateAmount || !id) {
-        toast.error("Donation amount missing!");
+    async (id) => {
+      if (!id) {
+        toast.error("Invalid ID");
         return;
       }
 
@@ -36,23 +35,23 @@ const useDirectFund = () => {
       }
 
       try {
-        const amountVal = ethers.parseUnits(donateAmount, 18);
-        const tx = await contract.directFunding(id, {
-          value: amountVal,
-        });
+       
+
+        const tx = await contract.vote(id);
+        console.log(tx)
         const receipt = await tx.wait();
-        console.log(receipt);
+        console.log(receipt)
 
         if (receipt.status === 1) {
-          toast.success("Direct funding successful");
+          toast.success("Vote Successful");
           return;
         }
 
-        toast.error("Direct funding failed");
+        toast.error("Voting failed");
         return;
       } catch (err) {
         const decodedError = await errorDecoder.decode(err);
-        toast.error(`Direct funding failed - ${decodedError.reason}`, {
+        toast.error(`Voting failed - ${decodedError.reason}`, {
           position: "top-center",
         });
       }
@@ -61,4 +60,4 @@ const useDirectFund = () => {
   );
 };
 
-export default useDirectFund;
+export default useVote;

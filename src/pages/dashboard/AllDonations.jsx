@@ -1,31 +1,10 @@
 import vector from "../../assets/vector.svg";
 import Banner from "../../components/Banner";
 import { GiReceiveMoney } from "react-icons/gi";
+import useAnalytic from "../../hooks/useAnalytic";
 
-const AllDonations = () => {
-    // const { chainId, address } = useWeb3ModalAccount();
-    // const { walletProvider } = useWeb3ModalProvider();
-    // const [donateHistory, setDonateHistory] = useState();
-    
-//   async function handleUserDonation() {
-//     if (!isSupportedChain(chainId)) return console.error("Wrong network");
-//     const readWriteProvider = getProvider(walletProvider);
-//     const signer = await readWriteProvider.getSigner();
-
-//     const contract = getVulfundContract(signer);
-
-//     try {
-//       const res = await contract.getDonator(address);
-//       setDonateHistory(res);
-//     } catch (error) {
-//       console.log(error)
-//     } 
-//   }
-
-//   useEffect(() => {
-//     handleUserDonation();
-//   }, []);
-
+const AllDonations = () => { 
+const { allDonation } = useAnalytic()
 
   return (
     <main className="bg-[#02080B]">
@@ -53,7 +32,7 @@ const AllDonations = () => {
             {" "}
             Total Donations(YTD)
             <br />
-            0.002 Avax
+            {Number(allDonation) / 1e18} TLOS
           </h1>
       </div>
       </section>

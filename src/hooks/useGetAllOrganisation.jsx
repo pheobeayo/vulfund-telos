@@ -14,10 +14,18 @@ const useGetAllOrganisation = () => {
             if (!walletProvider) return;
 
             const res = await contract.getallOrganisation();
-            const converted = res?.map((item) => ({
-                image: item[1], }))
-            setOrganisation(converted)
-            console.log(converted)
+            if (!res || !Array.isArray(res)) return;
+
+            const converted = res.map((item) => ({
+                address: item[0] || "",
+                image: item[1] || "",
+                orgName: item[2] || "",
+            }));
+
+            setOrganisation((prev) => 
+                JSON.stringify(prev) !== JSON.stringify(converted) ? converted : prev
+            );
+           
         } catch (error) {
             console.error(error);
         }

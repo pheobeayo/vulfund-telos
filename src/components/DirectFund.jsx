@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Modal, Box } from "@mui/material";
+import useDirectFund from "../hooks/useDirectFund";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -14,14 +16,19 @@ const style = {
   p: 4,
 };
 
-const DirectFund = () => {
+const DirectFund = ({ id }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [donateAmount, setDonateAmount] = useState();
+  const handleDirectDonate = useDirectFund();
 
- 
- 
+  const directDonate = async () => {
+    await handleDirectDonate(id, donateAmount)
+
+    setDonateAmount('')
+  }
+
   return (
     <div>
       <button
@@ -38,22 +45,19 @@ const DirectFund = () => {
       >
         <Box sx={style}>
           <input
+          readOnly
             type="text"
-            // value={id}
+            value={id}
             className="text-white rounded-lg w-[100%] p-4 bg-[#ffffff23] border border-white/50 backdrop-blur-lg mb-4 outline-none hidden"
-            
           />
           <input
             type="text"
             value={donateAmount}
             placeholder="Amount"
-            // onChange={(e) => setDonateAmount(e.target.value)}
+            onChange={(e) => setDonateAmount(e.target.value)}
             className="text-white rounded-lg w-[100%] p-4 bg-[#ffffff23] border border-white/50 backdrop-blur-lg mb-4 outline-none"
           />
-          <button
-            className="bg-gradient-to-r from-[#6AFEB0] to-[#5CE3FB] rounded-lg px-4 py-2 text-[#111012] mr-4 lg:text-[20px] md:text-[20px] text-[18px] w-[100%]"
-           
-          >
+          <button className="bg-gradient-to-r from-[#6AFEB0] to-[#5CE3FB] rounded-lg px-4 py-2 text-[#111012] mr-4 lg:text-[20px] md:text-[20px] text-[18px] w-[100%]" onClick={directDonate}>
             Donate &rarr;
           </button>
         </Box>

@@ -70,10 +70,10 @@ const ProjectDetail = () => {
                 </span>
               </h2>
               <h2 className="lg:px-0 md:px-0 lg:text-base md:text-base text-sm font-[500] my-6 flex justify-between flex-col lg:flex-row md:flex-row  w-[90%] mx-auto font-serif items-center text-center lg:text-left md:text-left text-[#5BDEF3] dark:text-[#5BDEF3]">
-              {Number(details.amount) / 1e18} Avax
+              {Number(details.amount) / 1e18} TLOS
                 <span className="lg:base md:base text-sm font-[500] ">
                   {" "}
-                  {Number(details.balance) / 1e18 } Avax
+                  {Number(details.balance) / 1e18 } TLOS
                 </span>
               </h2>
               <h2 className="lg:px-0 md:px-0 lg:text-base md:text-base text-sm font-[400] my-6 flex justify-between flex-col lg:flex-row md:flex-row  mx-auto font-serif items-center text-center lg:text-left md:text-left text-[#D3D0C7] dark:text-[#D3D0C7]">

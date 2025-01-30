@@ -3,7 +3,7 @@ import AnalyticsBanner from "../../components/AnalyticsBanner";
 import { BarChart } from "@mui/x-charts/BarChart";
 
 const Analytics = () => {
-
+  
   return (
     <main className="bg-[#02080B]">
       <AnalyticsBanner />

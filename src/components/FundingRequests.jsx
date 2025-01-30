@@ -36,8 +36,8 @@ const FundingRequests = () => {
                   Amount needed <span>Balance left</span>
                 </p>
                 <p className="flex justify-between text-[#5BDEF3]">
-                   Avax
-                  <span> Avax</span>
+                   TLOS
+                  <span> TLOS</span>
                 </p>
               </div>
          

@@ -18,7 +18,7 @@ const Header = () => {
 
   return (
     <header className="py-8 bg-[#02080B]">
-      <div className="w-[90%] mx-auto lg:flex md:flex justify-between hidden font-montserrat">
+      <div className="w-[90%] mx-auto lg:flex md:flex justify-between items-center hidden font-montserrat">
         <img src={logo} alt="" className="w-[235px] h-[43px]" />
         <nav>
           <NavLink
@@ -41,9 +41,9 @@ const Header = () => {
           >
             Register for Funding
           </button>
-          {!isConnected ? <button className="bg-gradient-to-r from-[#6AFEB0] to-[#5CE3FB] rounded-lg p-4 text-[#111012] font-montserrat mr-4 lg:text-[20px] md:text-[20px] text-[18px]" onClick={() => open()}>Connect Wallet</button> : <w3m-button /> }
+         
         </nav>
-       
+        {!isConnected ? <button className="bg-gradient-to-r from-[#6AFEB0] to-[#5CE3FB] rounded-lg p-4 text-[#111012] font-montserrat mr-4 lg:text-[20px] md:text-[20px] text-[18px]" onClick={() => open()}>Connect Wallet</button> : <w3m-button /> }
       </div>
       <div className="w-[95%] mx-auto flex justify-between lg:hidden md:hidden relative">
         <img src={logo} alt="" className="w-[185px] h-[43px]" />
@@ -77,7 +77,7 @@ const Header = () => {
             </button>
 
             <div className="mt-6">
-             
+            {!isConnected ? <button className="bg-gradient-to-r from-[#6AFEB0] to-[#5CE3FB] rounded-lg p-4 text-[#111012] font-montserrat mr-4 lg:text-[20px] md:text-[20px] text-[18px]" onClick={() => open()}>Connect Wallet</button> : <w3m-button /> }
             </div>
           </nav>
         )}

@@ -5,7 +5,6 @@ import abi from '../constants/abi.json'
 
 const useContractInstance = (withSigner = false) => {
   const { signer, readOnlyProvider } = useSignerorProvider();
-  console.log(signer)
 
   return useMemo(() => {
     if (withSigner) {

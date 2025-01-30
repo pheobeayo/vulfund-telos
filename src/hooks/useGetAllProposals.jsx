@@ -19,13 +19,12 @@ const useGetAllProposals = () => {
         description: item[1],
         proposalTopic: item[2],
         donationAddress: item[3],
-        proposalId: item[4],
+        proposalId: Number(item[4]),
         amount: item[5],
         balance: item[6],
-        votes: item[7],
+        votes: Number(item[7]),
       }));
       setAllProposal(converted);
-      console.log("formattedUserData", converted);
     } catch (error) {
       console.log("Error fetching all user NFTs", error);
     }

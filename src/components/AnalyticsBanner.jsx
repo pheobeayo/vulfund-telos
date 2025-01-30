@@ -1,12 +1,12 @@
 import { RiRefund2Line } from "react-icons/ri";
 import { GiReceiveMoney } from "react-icons/gi";
 import vector from "../assets/vector.svg";
-
+import useAnalytic from "../hooks/useAnalytic";
 
 const Banner = () => {
-  
- 
-  
+  const { allDonation, proposalTotal, duration, totalRegister, daoTotal } =
+    useAnalytic();
+
   return (
     <section className=" bg-[#02080B]">
       <div
@@ -28,7 +28,7 @@ const Banner = () => {
               <div>
                 <h1 className="text-left text-[12px] font-montserrat text-[#030014]">
                   Total Counts Circle
-                  <br /> {Number}
+                  <br /> 0
                 </h1>
               </div>
             </div>
@@ -42,7 +42,7 @@ const Banner = () => {
                 <h1 className="text-left text-[12px] font-montserrat text-[#030014]">
                   {" "}
                   Vote Duration
-                  <br /> {Number/ 86400}Days
+                  <br /> {Number(duration) / 86400}Days
                 </h1>
               </div>
             </div>
@@ -57,7 +57,7 @@ const Banner = () => {
                   {" "}
                   Total Donations(YTD)
                   <br />
-                  {Number/ 1e18} Avax
+                  {Number(allDonation) / 1e18} TLOS
                 </h1>
               </div>
             </div>
@@ -73,7 +73,7 @@ const Banner = () => {
                 <h1 className="text-left text-[12px] font-montserrat text-[#030014]">
                   {" "}
                   Total Counts of Signup
-                  <br /> {Number}
+                  <br /> {Number(totalRegister)}
                 </h1>
               </div>
             </div>
@@ -87,7 +87,7 @@ const Banner = () => {
                 <h1 className="text-left text-[12px] font-montserrat text-[#030014]">
                   {" "}
                   Dao Member Requirements
-                  <br /> {Number / 1e18} Avax
+                  <br /> 1TLOS
                 </h1>
               </div>
             </div>
@@ -101,7 +101,7 @@ const Banner = () => {
                 <h1 className="text-left text-[12px] font-montserrat text-[#030014]">
                   {" "}
                   Total Dao Members
-                  <br /> {Number}{" "}
+                  <br /> {Number(daoTotal)}{" "}
                 </h1>
               </div>
             </div>
@@ -116,7 +116,7 @@ const Banner = () => {
               <h1 className="text-left text-[12px] font-montserrat text-[#030014]">
                 {" "}
                 Total Proposals
-                <br /> {Number}
+                <br /> {Number(proposalTotal)}
               </h1>
             </div>
           </div>

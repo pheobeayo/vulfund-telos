@@ -15,8 +15,7 @@ import { formatUnits } from "ethers";
 
 const TreasuryDonation = () => {
   const { allProposal } = useGetAllProposals();
-  const { organisation } = useGetAllOrganisation();
-  console.log(organisation)
+  const  organisation  = useGetAllOrganisation();
 
   const convertIpfsUrl = (url) => {
     if (url && url.startsWith("ipfs://")) {
@@ -91,8 +90,8 @@ const TreasuryDonation = () => {
                       Amount needed <span>Balance left</span>
                     </p>
                     <p className="flex justify-between text-[#5BDEF3]">
-                      Avax
-                      <span> Avax</span>
+                      TLOS
+                      <span> TLOS</span>
                     </p>
                     <Link to={`treasury-donation/proposalid}`}>
                       <button className="bg-transparent my-4 border w-full py-2 px-4 border-white text-white rounded-lg">
@@ -134,7 +133,7 @@ const TreasuryDonation = () => {
                       </p>
                       <p className="flex justify-between text-[#5BDEF3]">
                         {" "}
-                        1,500 Avax <span> 1,500 Avax</span>
+                        1,500 TLOS <span> 1,500 TLOS</span>
                       </p>
                       <button className="bg-transparent my-4 border w-[100%] py-2 px-4 border-white text-white rounded-lg">
                         View details
@@ -161,7 +160,7 @@ const TreasuryDonation = () => {
                       </p>
                       <p className="flex justify-between text-[#5BDEF3]">
                         {" "}
-                        1,500 Avax <span> 1,500 Avax</span>
+                        1,500 TLOS <span> 1,500 TLOS</span>
                       </p>
                       <button className="bg-transparent my-4 border w-[100%] py-2 px-4 border-white text-white rounded-lg">
                         View details
@@ -188,7 +187,7 @@ const TreasuryDonation = () => {
                       </p>
                       <p className="flex justify-between text-[#5BDEF3]">
                         {" "}
-                        1,500 Avax <span> 1,500 Avax</span>
+                        1,500 TLOS <span> 1,500 TLOS</span>
                       </p>
                       <button className="bg-transparent my-4 border w-[100%] py-2 px-4 border-white text-white rounded-lg">
                         View details
@@ -227,7 +226,7 @@ const TreasuryDonation = () => {
                       </p>
                       <p className="flex justify-between text-[#5BDEF3]">
                         {" "}
-                        1,500 Avax <span> 1,500 Avax</span>
+                        1,500 TLOS <span> 1,500 TLOS</span>
                       </p>
                       <button className="bg-transparent my-4 border w-[100%] py-2 px-4 border-white text-white rounded-lg">
                         View details
@@ -255,7 +254,7 @@ const TreasuryDonation = () => {
                       </p>
                       <p className="flex justify-between text-[#5BDEF3]">
                         {" "}
-                        1,500 Avax <span> 1,500 Avax</span>
+                        1,500 TLOS <span> 1,500 TLOS</span>
                       </p>
                       <button className="bg-transparent my-4 border w-[100%] py-2 px-4 border-white text-white rounded-lg">
                         View details
@@ -282,7 +281,7 @@ const TreasuryDonation = () => {
                       </p>
                       <p className="flex justify-between text-[#5BDEF3]">
                         {" "}
-                        1,500 Avax <span> 1,500 Avax</span>
+                        1,500 TLOS <span> 1,500 TLOS</span>
                       </p>
                       <button className="bg-transparent my-4 border w-[100%] py-2 px-4 border-white text-white rounded-lg">
                         View details
@@ -303,18 +302,18 @@ const TreasuryDonation = () => {
                         key={item.proposalid}
                         className="lg:w-[32%] md:w-[32%] w-[100%] p-4 border-white bg-[#191F1C]/5 rounded-xl border shadow-lg"
                       >
-                        {organisation?.map(
+                        {organisation.map(
                           (info) =>
-                            item.beneficiary === info[0] && (
+                            item.beneficiary === info.address && (
                               <img
-                                src={convertIpfsUrl(info[1])}
+                                src={convertIpfsUrl(info.image)}
                                 alt="projectphoto"
                                 className="w-[100%] h-[237px] object-cover object-center rounded-lg"
                               />
                             )
                         )}
                         <h3 className="font-bold mt-4 lg:text-[20px] md:text-[20px] text-[18px] text-white">
-                          {item.proposalTopic}
+                          {item.proposalTopic} 
                         </h3>
                         <p className="text-white text-justify truncate">
                           {item.description.slice(0, 40)}...
@@ -323,10 +322,10 @@ const TreasuryDonation = () => {
                           Amount needed <span>Balance left</span>
                         </p>
                         <p className="flex justify-between text-[#5BDEF3]">
-                          {formatUnits(item.amount)} ETH
-                          <span>{formatUnits(item.balance)} ETH</span>
+                          {formatUnits(item.amount)} TLOS
+                          <span>{formatUnits(item.balance)} TLOS</span>
                         </p>
-                        <Link to={`funding-requests/${item.proposalid}`}>
+                        <Link to={`treasury-donation/${item.proposalId}`}>
                           <button className="bg-transparent my-4 border w-full py-2 px-4 border-white text-white rounded-lg">
                             View details
                           </button>

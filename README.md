@@ -66,7 +66,7 @@ https://vulfund-telos-psi.vercel.app/
 ### Demo Video: 
 ```bash
 
-https://youtu.be/f4l-HW9IEzU
+https://youtu.be/dczZqGQ9hLk
 
 
 ```
